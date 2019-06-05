@@ -47,11 +47,13 @@ myEmitter.on('error', (err) => {
 myEmitter.emit('error', new Error('whoops!'));    // Prints: whoops! there was an error
 ```
 
-`myEmitter.emit(eventName, [ ...args])`
-Synchronously calls each of the listeners registered for the event named eventName, in the order they were registered, passing the supplied arguments to each.
+* `myEmitter.emit(eventName, [ ...args])`
 
-`myEmitter.on(eventName, listenerFunc)`
-Adds the `listenerFunc` to the end of the listeners array for the event named `eventName`.
+  Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments to each.
+
+* `myEmitter.on(eventName, listenerFunc)`
+
+  Adds the `listenerFunc` to the end of the listeners array for the event named `eventName`.
 
 ## Streams
 
