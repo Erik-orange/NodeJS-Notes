@@ -1,4 +1,4 @@
-# NodeJs-ExpressJS-Notes
+# NodeJs-Notes
 
 ___
 
@@ -92,30 +92,69 @@ Signals that no more data will be written to the Writable Stream named `myWritab
 `writable.write(chunk, encoding, callbackFunc)` all arguments are optional
 Writes some data to the stream, and calls the supplied callback once the data has been fully handled.
 
-#### HTTP Transaction
+#### HTTP Transaction Anatomy
 
-* HTTP Methods, URL and Headers:
+* HTTP Methods, URL and Headers In A Request
 ```js
   const { method, url } = request;
-```
-Where:
-  `head` : GET/POST/PUT/DELETE
-  `url` : The full URL without the server, protocol or port. 
-
-```js  
+  
   const { headers } = request;
   const userAgent = headers['user-agent'];
 ```
-`headers` : An object in `request` containing the header information.
+When handling a request, Node places these properties in the `request` object.
+  `method` : GET/POST/PUT/DELETE
+  `url` : The full URL without the server, protocol or port. 
+  `headers` : Is an object in `request` containing the header information for the specific request.
 
-* Setting Header Data:
-If you want to explicitly write the headers to the response stream use `writeHead()`, which writes the status code and the headers to the stream.
+
+* Request Body
+When receiving a `POST` or `PUT` request, the request body might be important to your application.
+
+The `request` object that's passed in to a handler implements the `ReadableStream` interface.
+
+We can grab the data right out of the stream by listening to the stream's `data` and `end` events.
+
+The chunk emitted in each `data` event is a `Buffer`. If you know it's going to be string data, the best thing to do is collect the data in an array, then at the `end`, concatenate and stringify it.
+
+```js
+let body = [];
+request.on('data', (chunk) => {
+  body.push(chunk);
+}).on('end', () => {
+  body = Buffer.concat(body).toString();
+  // at this point, `body` has the entire request body stored in it as a string
+});
+```
+
+
+* Sending The Header Data For A Response
+`writeHead()` 
+Explicitly writes the headers and status code to the response stream.
+
 ```js
 response.writeHead(200, {
   'Content-Type': 'application/json',
   'X-Powered-By': 'bacon'
 });
 ```
+
+* Sending Response Body
+Since the `response` object is a `WritableStream`, writing a response body out to the client is just a matter of using the usual stream methods.
+
+```js
+response.write('<html>');
+response.write('<body>');
+response.write('<h1>Hello, World!</h1>');
+response.write('</body>');
+response.write('</html>');
+response.end();
+```
+
+
+
+
+
+
 
 
 
