@@ -52,10 +52,49 @@ Synchronously calls each of the listeners registered for the event named eventNa
 
 `emitter.on(eventName, listenerFunc)`
 Adds the `listenerFunc` to the end of the listeners array for the event named `eventName`.
+
+#### Streams
+
+A `stream` is an abstract interface for working with streaming data in Node.js.
+
+Streams can be readable, writable, or both. All streams are instances of `EventEmitter`.
+
+**Example** Node.js application that's using streams and implements an HTTP server:
 ```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+  // `req` is an http.IncomingMessage, which is a Readable Stream
+  // `res` is an http.ServerResponse, which is a Writable Stream
+
+  let body = '';
+
+  // Readable streams emit 'data' events once a listener is added
+  req.on('data', (chunk) => {
+    body += chunk;
+  });
+
+  // The 'end' event indicates that the entire body has been received
+  req.on('end', () => {
+    const data = JSON.parse(body);
+    res.write(typeof data);       // Write back something interesting to the user
+    res.end();
+   }
+  });
 });
+
+server.listen(1337);
 ```
+
+
+
+
+
+
+
+
+
+
+
 
 
