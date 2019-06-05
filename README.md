@@ -23,6 +23,8 @@ server.listen(port, hostname, () => {
 ```
 This will print a "Hello World" message on the screen when a user visits `http://localhost:3000`.
 
+___
+
 ## Events
 
 * All objects that emit events are instances of the `EventEmitter` class. 
@@ -35,18 +37,6 @@ This will print a "Hello World" message on the screen when a user visits `http:/
 
 * The `myEmitter.on()` method is used to register listeners, while the `myEmitter.emit()` method is used to trigger the event.
 
-* If an `EventEmitter` does _not_ have at least one listener registered for the `error` event, and an `error` event is emitted, the error is thrown, a stack trace is printed, and the Node.js process exits.
-
-```js
-const myEmitter = new MyEmitter();
-
-myEmitter.on('error', (err) => {
-  console.error('whoops! there was an error');
-});
-
-myEmitter.emit('error', new Error('whoops!'));    // Prints: whoops! there was an error
-```
-
 * `myEmitter.emit(eventName, [ ...args])`
 
   Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments to each.
@@ -54,6 +44,19 @@ myEmitter.emit('error', new Error('whoops!'));    // Prints: whoops! there was a
 * `myEmitter.on(eventName, listenerFunc)`
 
   Adds the `listenerFunc` to the end of the listeners array for the event named `eventName`.
+  
+* If an `EventEmitter` does _not_ have at least one listener registered for the `error` event, and an `error` event is emitted, the error is thrown, a stack trace is printed, and the Node.js process exits.
+
+```js
+  const myEmitter = new MyEmitter();
+
+  myEmitter.on('error', (err) => {
+    console.error('whoops! there was an error');
+  });
+
+  myEmitter.emit('error', new Error('whoops!'));    // Prints: whoops! there was an error
+```
+___
 
 ## Streams
 
