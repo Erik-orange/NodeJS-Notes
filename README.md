@@ -86,8 +86,11 @@ const server = http.createServer((req, res) => {
 server.listen(1337);
 ```
 
+`myWritable.end(chunk, encoding, callbackFunc)` all arguments are optional
+Signals that no more data will be written to the Writable Stream named `myWritable`.
 
-
+`writable.write(chunk, encoding, callbackFunc)` all arguments are optional
+Writes some data to the stream, and calls the supplied callback once the data has been fully handled.
 
 
 
