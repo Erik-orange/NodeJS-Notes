@@ -92,7 +92,30 @@ Signals that no more data will be written to the Writable Stream named `myWritab
 `writable.write(chunk, encoding, callbackFunc)` all arguments are optional
 Writes some data to the stream, and calls the supplied callback once the data has been fully handled.
 
+#### HTTP Transaction
 
+* HTTP Methods, URL and Headers:
+```js
+  const { method, url } = request;
+```
+Where:
+  `head` : GET/POST/PUT/DELETE
+  `url` : The full URL without the server, protocol or port. 
+
+```js  
+  const { headers } = request;
+  const userAgent = headers['user-agent'];
+```
+`headers` : An object in `request` containing the header information.
+
+* Setting Header Data:
+If you want to explicitly write the headers to the response stream use `writeHead()`, which writes the status code and the headers to the stream.
+```js
+response.writeHead(200, {
+  'Content-Type': 'application/json',
+  'X-Powered-By': 'bacon'
+});
+```
 
 
 
