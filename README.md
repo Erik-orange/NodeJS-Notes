@@ -37,16 +37,17 @@ ___
 
 * The `myEmitter.on()` method is used to register listeners, while the `myEmitter.emit()` method is used to trigger the event.
 
-* 
+#### Event Methods
+
 ```js
 myEmitter.emit(eventName, [ ...args])
 ```
-
 Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments to each.
 
-* `myEmitter.on(eventName, listenerFunc)`
-
-  Adds the `listenerFunc` to the end of the listeners array for the event named `eventName`.
+```js
+myEmitter.on(eventName, listenerFunc)
+```
+Adds the `listenerFunc` to the end of the listeners array for the event named `eventName`.
   
 * If an `EventEmitter` does _not_ have at least one listener registered for the `error` event, and an `error` event is emitted, the error is thrown, a stack trace is printed, and the Node.js process exits.
 
