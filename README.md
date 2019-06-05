@@ -37,9 +37,12 @@ ___
 
 * The `myEmitter.on()` method is used to register listeners, while the `myEmitter.emit()` method is used to trigger the event.
 
-* `myEmitter.emit(eventName, [ ...args])`
+* 
+```js
+myEmitter.emit(eventName, [ ...args])
+```
 
-  Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments to each.
+Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments to each.
 
 * `myEmitter.on(eventName, listenerFunc)`
 
