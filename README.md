@@ -6,7 +6,7 @@ ___
 
 Much of the Node.js core API is built around an idiomatic asynchronous event-driven architecture in which certain kinds of objects (called "emitters") emit named events that cause Function objects ("listeners") to be called.
 
-A simple Node server looks like this:
+**Example:** A simple Node server
 ```js
 const http = require('http');
 
