@@ -23,7 +23,7 @@ server.listen(port, hostname, () => {
 ```
 This will print a "Hello World" message on the screen when a user visits `http://localhost:3000`.
 
-#### Events
+### Events
 
 * All objects that emit events are instances of the `EventEmitter` class. 
 
@@ -53,13 +53,13 @@ Synchronously calls each of the listeners registered for the event named eventNa
 `myEmitter.on(eventName, listenerFunc)`
 Adds the `listenerFunc` to the end of the listeners array for the event named `eventName`.
 
-#### Streams
+### Streams
 
 A `stream` is an abstract interface for working with streaming data in Node.js.
 
 Streams can be readable, writable, or both. All streams are instances of `EventEmitter`.
 
-**Example** Node.js application that's using streams and implements an HTTP server:
+**Example:** Node.js application that's using streams and implements an HTTP server:
 ```js
 const http = require('http');
 
@@ -92,7 +92,7 @@ Signals that no more data will be written to the Writable Stream named `myWritab
 `writable.write(chunk, encoding, callbackFunc)` all arguments are optional
 Writes some data to the stream, and calls the supplied callback once the data has been fully handled.
 
-#### HTTP Transaction Anatomy
+### HTTP Transaction Anatomy
 
 * HTTP Methods, URL and Headers In A Request
 ```js
