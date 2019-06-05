@@ -47,7 +47,7 @@ ___
   
 * If an `EventEmitter` does _not_ have at least one listener registered for the `error` event, and an `error` event is emitted, the error is thrown, a stack trace is printed, and the Node.js process exits.
 
-```js
+  ```js
   const myEmitter = new MyEmitter();
 
   myEmitter.on('error', (err) => {
@@ -55,7 +55,7 @@ ___
   });
 
   myEmitter.emit('error', new Error('whoops!'));    // Prints: whoops! there was an error
-```
+  ```
 ___
 
 ## Streams
