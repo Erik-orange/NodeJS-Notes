@@ -1,8 +1,8 @@
-# NodeJs-Notes
+# NodeJS-Notes
 
 ___
 
-## Node.js
+## Node.js Basics
 
 Much of the Node.js core API is built around an idiomatic asynchronous event-driven architecture in which certain kinds of objects (called "emitters") emit named events that cause Function objects ("listeners") to be called.
 
@@ -29,7 +29,7 @@ This will print a "Hello World" message on the screen when a user visits `http:/
 
   These objects expose an `myEmitter.on()` function that allows one or more functions to be attached to named events emitted by the object.
 
-  When the `EventEmitte`r object emits an event, all of the functions attached to that specific event are called synchronously.
+  When the `EventEmitter` object emits an event, all of the functions attached to that specific event are called synchronously.
 
   Any values returned by the called listeners are ignored and will be discarded.
 
@@ -126,7 +126,6 @@ request.on('data', (chunk) => {
 });
 ```
 
-
 * Sending The Header Data For A Response
 `writeHead()` 
 Explicitly writes the headers and status code to the response stream.
@@ -149,17 +148,3 @@ response.write('</body>');
 response.write('</html>');
 response.end();
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
