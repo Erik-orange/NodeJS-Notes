@@ -49,17 +49,17 @@ myEmitter.on(eventName, listenerFunc)
 ```
 Adds the `listenerFunc` to the end of the listeners array for the event named `eventName`.
   
-* If an `EventEmitter` does _not_ have at least one listener registered for the `error` event, and an `error` event is emitted, the error is thrown, a stack trace is printed, and the Node.js process exits.
+```js
+const myEmitter = new MyEmitter();
 
-  ```js
-  const myEmitter = new MyEmitter();
+myEmitter.on('error', (err) => {
+  console.error('whoops! there was an error');
+});
 
-  myEmitter.on('error', (err) => {
-    console.error('whoops! there was an error');
-  });
+myEmitter.emit('error', new Error('whoops!'));    // Prints: whoops! there was an error
+```
+If an `EventEmitter` does _not_ have at least one listener registered for the `error` event, and an `error` event is emitted, the error is thrown, a stack trace is printed, and the Node.js process exits.
 
-  myEmitter.emit('error', new Error('whoops!'));    // Prints: whoops! there was an error
-  ```
 ___
 
 ## Streams
