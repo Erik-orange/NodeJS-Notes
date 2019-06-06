@@ -6,6 +6,15 @@ ___
 
 Much of the Node.js core API is built around an idiomatic asynchronous event-driven architecture in which certain kinds of objects (called "emitters") emit named events that cause Function objects ("listeners") to be called.
 
+The Node Basics:
+1. Instantiate an HTTP server with a request handler function, and have it listen on a port.
+2. Get headers, URL, method and body data from request objects. Handle stream errors on the request stream.
+3. Make routing decisions based on URL and/or other data in request objects. Or use `request.pipe(response)` to pipe data from request objects and to response objects in response to `POST` requests.
+4. Send headers, HTTP status codes and body data via response objects. Handle stream errors on the response stream.
+
+
+
+
 **Example:** A simple Node server
 ```js
 const http = require('http');
